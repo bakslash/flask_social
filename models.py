@@ -27,3 +27,9 @@ class User(UserMixin, Model):
 					is_admin=admin)
 			except IntergrityError:
 				raise ValueError("User already exist")
+
+
+def initialize():
+    DATABASE.connect()
+    DATABASE.create_tables([User],safe=True)
+    DATABASE.close()				
