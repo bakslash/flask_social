@@ -17,7 +17,7 @@ login_manager.login_view = 'login'
 def load_user(userid):
 	try:
 		return models.User.get(models.User.id == userid)
-	except models.DoesNotExist
+	except models.DoesNotExist:
 	    return None	
 
 @app.before_request
@@ -36,10 +36,10 @@ def after_request(response):
 if __name__ == '__main__':
     models.initialize()
     models.User.create_user(
-    	name='marcus',
+    	username='marcus',
     	email='marcusmuasa@gmail.com',
-    	password=password
-    	admin=True)
-	app.run(debug=DEBUG, host=HOST,port=PORT)
+    	password='password',
+    	admin=True )
+app.run(debug=DEBUG, host=HOST,port=PORT)
 
 
